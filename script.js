@@ -16,14 +16,15 @@ const handleSlider = (event) => {
 
 const handleCheckbox = () => {
   const numberEl = getElement("number");
+
   const specialCharEl = getElement("special");
 
-  if (numberEl.checked === "true") {
-    charSet = "0123456789";
+  if (numberEl.checked === true) {
+    charSet +=numberSet;
   } else {
     charSet = charSet.replace(/0123456789/g, "");
   }
-  if (specialCharEl.checked === "true") {
+  if (specialCharEl.checked === true) {
     charSet += "!@#$%^&()";
   } else {
     charSet = charSet.replace(/[^\w ]/g, "");
@@ -38,9 +39,10 @@ const generatePassword = () => {
 
   let password = "";
 
-  console.log(charCount.length)
 
-  for (let i = 0; i < charCount.length; i++) {
+  const charValue = parseInt(charCount)
+
+  for (let i = 0; i < charValue; i++) {
     const randomNumber = Math.floor(Math.random() * charSet.length);
     password += charSet.substring(randomNumber, randomNumber + 1);
   }
