@@ -65,9 +65,9 @@ const handleViewPassword = () => {
 };
 
 const handleCopy = () => {
-  const copyText = getElement("password");
-  copyText.select();
-  document.execCommand("copy");
+  const copyText = getElement("password").value;
+ 
+  window.navigator.clipboard.writeText(copyText)
   alert("Password copied to clipboard");
 };
 
